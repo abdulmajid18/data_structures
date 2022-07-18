@@ -1,0 +1,40 @@
+"""
+Given a sorted array A ofelements, possibly with 
+duplicates, find the index of the first occurrence 
+of a number in O(logn) time
+"""
+
+
+"""
+To find the first occurrence of a number we need
+to check for the following condition. Return the 
+position if any one of the following is true:
+"""
+
+A = [5, 6, 9, 12, 15, 21, 21, 34, 45, 57, 70, 84]
+
+
+def binarySearchFirstOccurrence(A, target):
+    if A == None or len(A) == 0:
+        return -1
+    high = len(A)-1
+    low = 0
+    m = 0
+    lastFound = -1
+    while(1):
+        if (low > high):
+            return lastFound
+        m = (low+high)//2
+        if (A[m] == target):
+            lastFound = m
+            high = m-1
+        if (A[m] < target):
+            low = m+1
+        if (A[m] > target):
+            high = m-1
+    return m
+
+
+A = [5, 6, 9, 12, 15, 21, 21, 34, 45, 57, 70, 84]
+print(binarySearchFirstOccurrence(A, 21))
+# binarySearchFirstOccurence(A, 21)

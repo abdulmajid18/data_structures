@@ -1,0 +1,31 @@
+
+from xml.dom import minidom
+
+
+A = [5, 6, 9, 12, 15, 21, 21, 34, 45, 57, 70, 84]
+
+
+def binarySearchLastOccurrence(A, target):
+    if A == None or len(A) == 0:
+        return -1
+    high = len(A)-1
+    low = 0
+    m = 0
+    lastFound = -1
+    while 1:
+        if low > high:
+            return lastFound
+        m = (low + high) // 2
+        if A[m] == target:
+            lastFound = m
+            low = m + 1
+        if A[m] < target:
+            low = m + 1
+        if A[m] > target:
+            high = m - 1
+    return m
+
+
+A = [5, 6, 9, 12, 15, 21, 21, 34, 45, 57, 70, 84]
+print(binarySearchLastOccurrence(A, 21))
+print((7+8) // 2)
