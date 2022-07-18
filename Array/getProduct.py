@@ -1,4 +1,5 @@
 from functools import reduce
+import re
 """ Get the product of al other elements"""
 
 def get_product_brute(A):
@@ -31,8 +32,43 @@ A = [1,2,3,4,5]
 # A = [3,2,1]
 
 
-# def products(nums):
+def products(nums):
     # Generate prefix
-    # prefix_products
+    prefix_products = []
+    for v in nums:
+        if prefix_products:
+            prefix_products.append(prefix_products[-1] * v)
+        else:
+            prefix_products.append(v)
+            
+    suffix_product = []
+    for v in reversed(nums):
+        if suffix_product:
+            suffix_product.append(suffix_product[-1] * v)
+        else:
+            suffix_product.append(v)
+    suffix_product = list(reversed(suffix_product))
+    print(prefix_products)
+    print(suffix_product)
+    for i,v in enumerate(nums):
+        if i == 0:
+            nums[i] = v
+        elif i == len(A) - 1:
+            nums[i] = prefix_products[-1]
+        else:
+            prefix = prefix_products[i-1]
+            sufix = suffix_product[i+1]
+            nums[i] = prefix * sufix
+    print(nums)
+
+
+
+
+
+products(A)
+
+
+
+
 # get_product_division(A)
 
