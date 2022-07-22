@@ -62,6 +62,22 @@ def deleteDuplicate(A):
     return write_index
 
 
-x = deleteDuplicate(A)
-print(x)
+# x = deleteDuplicate(A)
+# print(x)
 # x, y = removeDuplicateHash(A)
+
+N = int(input())
+arr = input().split()
+
+arr = [int(i) for i in arr]
+arr.sort()
+
+highestCount = 0
+highestItem = 0
+
+for item in arr:
+    if arr.count(item) >= highestCount:
+        highestItem = item
+        highestCount = arr.count(item)
+print(highestItem)
+print(highestCount)
