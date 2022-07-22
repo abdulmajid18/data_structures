@@ -1,4 +1,4 @@
-from collections import Counter
+from collections import Counter, defaultdict
 def anagrm_indices(w,s):
     result = []
     w_size = len(w)
@@ -23,4 +23,38 @@ def anagram_indices(word, s):
         if is_anagram(window, word):
             result.append(i)
     return result
+
+
+
+def del_if_zero(dict, char):
+    if dict[char] == 0:
+        del dict[char]
+
+def anagram_indices(word, s):
+    result = []
+
+    freq = defaultdict(int)
+
+    for char in word:
+        freq[char] += 1
+
+    for char in s[:len(word)]:
+        freq[char] -= 1
+        del_if_zero(freq, char)
+    
+    if not freq:
+        result.append(0)
+    
+    for i in range(len(word), len(s)):
+        start_char, end_char = s[i-len(word)], s[i]
+        freq[start_char] += 1
+        del_if_zero(freq, start_char)
+
+        freq[end_char] -= 1
+
+
+
+anagram_indices('ab', 'abxaba')
+
+    
 
