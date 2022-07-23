@@ -76,5 +76,32 @@ def find_min_max_simutanously(A):
     return global_min_max
    
 
-ans = find_min_max_simutanously(A)
-print(ans)
+# ans = find_min_max_simutanously(A)
+# print(ans)
+A = [3,2,1,5,4]
+
+def kth_largest_element_in_array1(A:list, k):
+    sorted_arr = sorted(A)
+    print(sorted_arr[k])
+
+def kth_largest_element_in_array2(A:list, k):
+    hash_table = []
+    new = A  
+    for j in range(len(A)-1):     
+        maxi = -1
+        for i,v in enumerate(new):
+            if v > maxi:
+                maxi = v
+        hash_table.append(maxi)
+        new.remove(maxi)
+    last = new[-1]
+    hash_table.append(last)
+    print(hash_table)
+            
+# def kth_largest_element_in_array3(A, k):
+#     def partition_around_pivot(left, right, pivot_idx):
+#         pass
+        
+
+
+# kth_largest_element_in_array2(A,4)
