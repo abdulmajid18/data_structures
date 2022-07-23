@@ -47,10 +47,18 @@ def anagram_indices(word, s):
     
     for i in range(len(word), len(s)):
         start_char, end_char = s[i-len(word)], s[i]
+        print(s[i-len(word)], s[i])
         freq[start_char] += 1
         del_if_zero(freq, start_char)
 
         freq[end_char] -= 1
+        del_if_zero(freq, end_char)
+
+        if not freq:
+            begining_index = i - len(word) + 1
+            result.append(begining_index)
+    
+    return result
 
 
 
