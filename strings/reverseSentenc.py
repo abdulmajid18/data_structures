@@ -30,5 +30,29 @@ def reverseSen(sen):
     return "".join(sen)
 
 
-ans = reverseSen(sen)
-print(ans)
+# ans = reverseSen(sen)
+# print(ans)
+
+
+x = 'lets pad this sentence'
+'senttence this pad lets'
+
+print(x.split())
+string_arr = x.split()
+elem,max = 0,0
+for i in string_arr:
+    if len(i) > max:
+        max = len(i)
+        elem = i
+pad_len = len(elem)//2
+new = ''
+for i in string_arr:
+    if i == elem:
+        continue
+    pad_elem = pad_len*' '
+    new += pad_elem+i+pad_elem  
+new += elem
+print(new)
+
+
+
