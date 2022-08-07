@@ -12,8 +12,9 @@ def removeDuplicateBruteForce(A):
         for j in range(i+1, len(A)):
             if A[i] == A[j]:
                 A = A[:j]
+                print(A)
                 return A
-
+removeDuplicateBruteForce(A)
 
 def removeDuplicateHash(A):
     unique = []
@@ -66,18 +67,18 @@ def deleteDuplicate(A):
 # print(x)
 # x, y = removeDuplicateHash(A)
 
-N = int(input())
-arr = input().split()
+# N = int(input())
+# arr = input().split()
 
-arr = [int(i) for i in arr]
-arr.sort()
+# arr = [int(i) for i in arr]
+# arr.sort()
 
-highestCount = 0
-highestItem = 0
+# highestCount = 0
+# highestItem = 0
 
-for item in arr:
-    if arr.count(item) >= highestCount:
-        highestItem = item
-        highestCount = arr.count(item)
-print(highestItem)
-print(highestCount)
+# for item in arr:
+#     if arr.count(item) >= highestCount:
+#         highestItem = item
+#         highestCount = arr.count(item)
+# print(highestItem)
+# print(highestCount)

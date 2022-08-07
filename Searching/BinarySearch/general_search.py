@@ -98,11 +98,23 @@ def kth_largest_element_in_array2(A:list, k):
     last = new[-1]
     hash_table.append(last)
     print(hash_table)
-            
+
+def kth_largest_element_in_array_bubblesort(L,k):
+    for i in range(len(L)):
+        for j in range(1, len(L)):
+            if L[j-1] > L[j]:
+                temp = L[j]
+                L[j] = L[j-1]
+                L[j-1] = temp
+    k = len(A)-k
+    print(L[k])
+
+kth_largest_element_in_array_bubblesort(A,2)
+# kth_largest_element_in_array2(A,1)
 # def kth_largest_element_in_array3(A, k):
 #     def partition_around_pivot(left, right, pivot_idx):
 #         pass
-        
+
 
 
 # kth_largest_element_in_array2(A,4)
@@ -294,5 +306,5 @@ def twoElementsWithSumK_nlogn(A, k):
             high -= 1
     return 0
 A = [1,4,45,6,10,-8]
-ans = twoElementsWithSumK_nlogn(A,46)
-print(ans)
+# ans = twoElementsWithSumK_nlogn(A,46)
+
