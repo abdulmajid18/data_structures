@@ -9,7 +9,7 @@ def bubble_sort(L):
                 L[j] = L[j-1]
                 L[j-1] = temp
 
-
+A = [10, 4, 43, 5, 57, 91, 45, 9, 7]
 def bubbleSort(L):
     for i in range(len(L)):
         for j in range(1, len(L)):
@@ -55,4 +55,4 @@ A = [10, 4, 43, 5, 57, 91, 45, 9, 7]
 L = [1, 3, 5, 7, 2, 6, 25, 18, 13]
 
 bubbleSortA(A)
-print(A)
+# print(A)
