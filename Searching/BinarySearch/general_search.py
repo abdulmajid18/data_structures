@@ -1,6 +1,7 @@
 # Search in2D sorted array
 import collections
 from itertools import count
+import random
 import sys
 A = [[-1,2,4,4,6],
      [1,5,5,9,21],
@@ -81,11 +82,22 @@ def find_min_max_simutanously(A):
 # print(ans)
 A = [3,2,1,5,4]
 
-def kth_largest_element_in_array1(A:list, k):
-    sorted_arr = sorted(A)
-    print(sorted_arr[k])
+# def kth_largest_element_in_array1(A:list, k):
+#     sorted_arr = sorted(A)
+#     print(sorted_arr)
+#     print(sorted_arr[k-1])
 
+# kth_largest_element_in_array1(A,1)
 def kth_largest_element_in_array2(A:list, k):
+    sorted_arr = sorted(A)
+    sorted_arr.reverse()
+    print(sorted_arr)
+    print(sorted_arr[k-1])
+    # return sorted_arr[k-1]
+
+# kth_largest_element_in_array2(A,1)
+
+def kth_largest_element_in_array3(A:list, k):
     hash_table = []
     new = A  
     for j in range(len(A)-1):     
@@ -98,6 +110,8 @@ def kth_largest_element_in_array2(A:list, k):
     last = new[-1]
     hash_table.append(last)
     print(hash_table)
+    print(new)
+# kth_largest_element_in_array3(A,1)
 
 def kth_largest_element_in_array_bubblesort(L,k):
     for i in range(len(L)):
@@ -109,12 +123,14 @@ def kth_largest_element_in_array_bubblesort(L,k):
     k = len(A)-k
     print(L[k])
 
-kth_largest_element_in_array_bubblesort(A,2)
+# kth_largest_element_in_array_bubblesort(A,2)
 # kth_largest_element_in_array2(A,1)
 # def kth_largest_element_in_array3(A, k):
 #     def partition_around_pivot(left, right, pivot_idx):
 #         pass
-
+# B = [8,1,3,2,6,7]
+# def kth_largest_element_in_array_mx_heap(A,k):
+#     """In max heap we need the smallest so we get rid of maxi"""
 
 
 # kth_largest_element_in_array2(A,4)
@@ -307,4 +323,53 @@ def twoElementsWithSumK_nlogn(A, k):
     return 0
 A = [1,4,45,6,10,-8]
 # ans = twoElementsWithSumK_nlogn(A,46)
+A = [3,2,1,5,6,4]
+def kth_largest_element_in_array_quick_select_1(A,k):
+    def partition(A, start, stop):
+        pivot = A[stop]
+        pIndex = start
+        for i in range(start, stop):
+            if A[i] <= pivot:
+                A[pIndex], A[i] = A[i], A[pIndex]
+                pIndex += 1
+        A[pIndex], A[stop] =  A[stop], A[pIndex]
+
+        index = len(A)-k  
+        if pIndex > index:
+            return  partition(A,start,pIndex-1)
+        elif pIndex < index:
+            return partition(A,pIndex+1,stop)
+        else:
+            return A[pIndex]
+    return partition(A, 0, len(A)-1)
+
+import random
+def kth_largest_element_in_array_quick_select_2(A,k):
+    def partition(A, start, stop, pivot_idx):
+        pivot_value = A[pivot_idx]
+        new_pivot_idx = start
+        for i in range(start, stop):
+            
+            if A[i] <= pivot_value:
+                A[new_pivot_idx], A[i] = A[i], A[new_pivot_idx]
+                new_pivot_idx += 1
+        A[new_pivot_idx], A[stop] =  A[stop], A[new_pivot_idx]
+        return new_pivot_idx
+
+    start = 0
+    stop = len(A)-1
+
+    while start <= stop:
+        pivot_idx = random.randint(start, stop)
+        new_pivot_idx = partition(A, start, stop, pivot_idx)
+        if new_pivot_idx == k - 1:
+            return A[new_pivot_idx]
+        elif new_pivot_idx > k - 1:
+            stop = new_pivot_idx - 1
+        else:
+            start = new_pivot_idx + 1
+
+
+# ans = kth_largest_element_in_array_quick_select(A,2)
+# print(ans)
 
