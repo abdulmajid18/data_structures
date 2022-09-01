@@ -16,7 +16,7 @@ def isValidExpression(expression):
 
 
 C = "([)]"
-print(isValidExpression(B))
+# print(isValidExpression(B))
 
 
 def isValid(self, s: str) -> bool:
