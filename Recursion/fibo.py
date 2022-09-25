@@ -5,6 +5,6 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 
 
-ans = fib(10)
+ans = fib(5)
 
 print(ans)

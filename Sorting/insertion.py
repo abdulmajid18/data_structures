@@ -10,7 +10,6 @@ def insertionA(A):
             i = i - 1
     return A
 
-
 # def insertionB(A):
 #     for i in range(1, len(A)):
 #         temp = A[i]
