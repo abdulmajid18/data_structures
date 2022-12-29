@@ -25,7 +25,7 @@ def removeDuplicateHash(A):
             helper.add(i)
     return unique, helper
 
-
+#  [1,1,2]
 def removeDuplicateSort(A):
     A.sort()
     j = 0
